@@ -25,7 +25,9 @@ export function Navbar() {
             variant="outline-primary"
             className="rounded-circle bg-light"
           >
-            <BsCart3 color="black"></BsCart3>
+            <i >
+              <BsCart3 color="black"></BsCart3>
+            </i>
 
             <div
               className="rounded-circle bg-danger d-flex-justify content-center
