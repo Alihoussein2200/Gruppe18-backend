@@ -36,7 +36,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
           <div>
             <Link to="StorePreview/">
               {" "}
-              <Button className="bg-success w-100">Kassen </Button>
+              <Button className="bg-info w-100">Gå til Kassen</Button>
             </Link>
           </div>
         </Stack>

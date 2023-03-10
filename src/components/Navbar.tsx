@@ -10,7 +10,7 @@ export function Navbar() {
       <Container>
         <Nav className="me-auto">
           <Nav.Link to="/store" as={NavLink}>
-            Vitaminer
+            Shop
           </Nav.Link>
 
           <Nav.Link to="/about" as={NavLink}>

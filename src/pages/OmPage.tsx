@@ -1,3 +1,3 @@
-export function About(){
-    return <h1> Emmanuel s215790 </h1>
+export function About() {
+  return <h1> Gruppe 12 </h1>;
 }

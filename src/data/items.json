@@ -1,27 +1,38 @@
 [
-    {
-      "id": 1,
-      "name": "D-vitamin, 100 stk",
-      "price": 116
-      
-    },
-    {
-      "id": 2,
-      "name": "C-vitamin, 250 stk",
-      "price": 150
-      
-    },
-    {
-      "id": 3,
-      "name": "Omega 3 fiskeolie, 120 stk",
-      "price": 70
-      
-    },
-
-    {
-      "id": 4,
-      "name": "Multivitamin, 150 stk",
-      "price": 130
-      
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Barbermaskine",
+    "price": 800,
+    "imgUrl": "/imgs/Bar1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Skraber",
+    "price": 280,
+    "imgUrl": "/imgs/Razor.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Skæg olie",
+    "price":  350,
+    "imgUrl": "/imgs/Oil.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Barberblade",
+    "price": 130,
+    "imgUrl": "/imgs/Pack.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Hår børste",
+    "price": 230,
+    "imgUrl": "/imgs/Brush.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Barberkniv",
+    "price": 380,
+    "imgUrl": "/imgs/Razor2.jpg"
+  }
+]
