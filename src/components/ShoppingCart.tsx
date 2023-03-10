@@ -33,7 +33,7 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
             )}
           </div>
 
-          <div>
+          <div >
             <Link to="StorePreview/">
               {" "}
               <Button className="bg-info w-100">Gå til Kassen</Button>
