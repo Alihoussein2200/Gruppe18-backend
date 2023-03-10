@@ -3,8 +3,7 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/items.json";
-import { StorePreview } from "../pages/KassePage";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 type ShoppingCartProps = {
   isOpen: boolean;
