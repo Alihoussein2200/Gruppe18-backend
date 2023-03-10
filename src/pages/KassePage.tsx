@@ -33,14 +33,14 @@ export function CheckoutPage(price: number) {
             <li className="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 className="my-0">Produkt</h6>
-                <small className="text-muted">Brief description</small>
+                <small className="text-muted">Beskrivelse</small>
               </div>
               <span className="text-muted">{formatCurrency(price)}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between lh-condensed">
               <div>
                 <h6 className="my-0">Produkt</h6>
-                <small className="text-muted">beskrivelse</small>
+                <small className="text-muted">Beskrivelse</small>
               </div>
               <span className="text-muted">{formatCurrency(price)}</span>
             </li>
@@ -61,7 +61,7 @@ export function CheckoutPage(price: number) {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Promo code"
+                placeholder="Kuponkode"
               />
               <div className="input-group-append">
                 <Button type="button" className="btn btn-secondary">
