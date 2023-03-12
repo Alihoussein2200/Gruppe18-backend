@@ -1,8 +1,14 @@
 import { Button } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
+<<<<<<< Updated upstream
 import apiData from "../data/api.json"
 import { useState } from "react";
 import { City } from "../models/City";
+=======
+import { CheckoutItem } from "../components/CartItem";
+import { useShoppingCart } from "../context/ShoppingCartContext";
+import storeItems from "../data/items.json";
+>>>>>>> Stashed changes
 
 type StoreItemProps = {
   id: number;
@@ -12,6 +18,7 @@ type StoreItemProps = {
 };
 
 export function CheckoutPage(price: number) {
+<<<<<<< Updated upstream
   const [postalCode, setPostalCode] = useState("");
   const [cityName, setCityName] = useState("");
 
@@ -40,6 +47,9 @@ export function CheckoutPage(price: number) {
     return cityList;
   }
 
+=======
+  const { cartItems } = useShoppingCart();
+>>>>>>> Stashed changes
   return (
     <div className="maincontainer">
       <div className="py-5 text-center">
@@ -51,40 +61,34 @@ export function CheckoutPage(price: number) {
         <div className="col-md4 order-md2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Kurv</span>
-            <span className="badge badge-secondary badge-pill">3</span>
+            <span className="badge badge-secondary badge-pill"></span>
           </h4>
           <ul className="list-group mb-3">
             <li className="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 className="my-0">Produkt</h6>
-                <small className="text-muted">Beskrivelse</small>
+                {cartItems.map((item) => (
+                  <CheckoutItem key={item.id} {...item} />
+                ))}
               </div>
-              <span className="text-muted">{formatCurrency(price)}</span>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Produkt</h6>
-                <small className="text-muted">Beskrivelse</small>
-              </div>
-              <span className="text-muted">{formatCurrency(price)}</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Produkt</h6>
-                <small className="text-muted">Beskrivelse</small>
-              </div>
-              <span className="text-muted">{formatCurrency(price)}</span>
-            </li>
+
             <li className="list-group-item d-flex justify-content-between bg-light">
               <div className="text-success">
                 <h6 className="my-0">Rabat</h6>
-                <small>Mængderabt</small>
+                <small>Mængderabat</small>
               </div>
               <span className="text-success">-20 kr</span>
             </li>
             <li className="list-group-item d-flex justify-content-between">
-              <span>Total (DKK)</span>
-              <strong>//</strong>
+              <div className="ms-auto fw-bold fs-5">
+                I alt{" "}
+                {formatCurrency(
+                  cartItems.reduce((total, cartItem) => {
+                    const item = storeItems.find((i) => i.id === cartItem.id);
+                    return total + (item?.price || 0) * cartItem.quantity;
+                  }, 0)
+                )}
+              </div>
             </li>
           </ul>
           <form className="card p-2">

@@ -37,6 +37,40 @@ export function CartItem({ id, quantity }: CartItemProps) {
         &times;
       </Button>
     </Stack>
+  );
+}
 
+export function CheckoutItem({ id, quantity }: CartItemProps) {
+  const { removeFromCart } = useShoppingCart();
+  const item = storeItems.find((i) => i.id === id);
+  if (item == null) return null;
+
+  return (
+    <div>
+      <div style={{ margin: "auto" }}>
+        <div className="col-md4 order-md2 mb-4">
+          {item.name}{" "}
+          {quantity > 1 && (
+            <span className="text-muted" style={{ fontSize: ".99rem" }}>
+              x {quantity}
+            </span>
+          )}
+          <div
+            style={{ position: "absolute", right: 40, width: 100, height: 0 }}
+          >
+            {" "}
+            {formatCurrency(item.price * quantity)}
+          </div>
+          <Button
+            style={{ position: "absolute", right: 20 }}
+            variant="outline-danger"
+            size="sm"
+            onClick={() => removeFromCart(item.id)}
+          >
+            &times;
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
