@@ -1,11 +1,14 @@
 import { Button } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
-import apiData from "../data/api.json";
+<<<<<<< Updated upstream
+import apiData from "../data/api.json"
 import { useState } from "react";
 import { City } from "../models/City";
+=======
 import { CheckoutItem } from "../components/CartItem";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import storeItems from "../data/items.json";
+>>>>>>> Stashed changes
 
 type StoreItemProps = {
   id: number;
@@ -15,8 +18,10 @@ type StoreItemProps = {
 };
 
 export function CheckoutPage(price: number) {
+<<<<<<< Updated upstream
   const [postalCode, setPostalCode] = useState("");
   const [cityName, setCityName] = useState("");
+
 
   function handlePostalChange(input: string): void {
     setPostalCode(input);
@@ -24,9 +29,9 @@ export function CheckoutPage(price: number) {
     if (input.length === 4) {
       var cityList = fetchPostalCityLists();
 
-      var cityMatch = cityList.find((city) => {
+      var cityMatch = cityList.find(city => {
         return city.postalCode === input;
-      });
+      })
       console.log(cityMatch);
 
       if (cityMatch) {
@@ -37,13 +42,14 @@ export function CheckoutPage(price: number) {
 
   function fetchPostalCityLists(): City[] {
     // var cityList = new List<City>
-    var cityList = apiData.map((e) => new City(e.nr, e.navn));
+    var cityList = apiData.map(e => new City(e.nr, e.navn));
     console.log(cityList);
     return cityList;
   }
 
+=======
   const { cartItems } = useShoppingCart();
-
+>>>>>>> Stashed changes
   return (
     <div className="maincontainer">
       <div className="py-5 text-center">
@@ -55,15 +61,17 @@ export function CheckoutPage(price: number) {
         <div className="col-md4 order-md2 mb-4">
           <h4 className="d-flex justify-content-between align-items-center mb-3">
             <span className="text-muted">Kurv</span>
+            <span className="badge badge-secondary badge-pill"></span>
           </h4>
           <ul className="list-group mb-3">
             <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <span className="text-muted">{formatCurrency(price)}</span>
-              {cartItems.map((item) => (
+              <div>
+                {cartItems.map((item) => (
                   <CheckoutItem key={item.id} {...item} />
                 ))}
+              </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed"></li>
+
             <li className="list-group-item d-flex justify-content-between bg-light">
               <div className="text-success">
                 <h6 className="my-0">Rabat</h6>
@@ -145,7 +153,7 @@ export function CheckoutPage(price: number) {
                       className="form-control"
                       id="postalNr"
                       placeholder=""
-                      onChange={(e) => handlePostalChange(e.target.value)}
+                      onChange = {e => handlePostalChange(e.target.value)}
                     />
                   </div>
 

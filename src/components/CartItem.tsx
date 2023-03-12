@@ -37,10 +37,8 @@ export function CartItem({ id, quantity }: CartItemProps) {
         &times;
       </Button>
     </Stack>
-
   );
 }
-
 
 export function CheckoutItem({ id, quantity }: CartItemProps) {
   const { removeFromCart } = useShoppingCart();
