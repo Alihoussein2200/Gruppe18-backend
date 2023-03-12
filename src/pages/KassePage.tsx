@@ -1,5 +1,8 @@
 import { Button } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
+import apiData from "../data/api.json"
+import { useState } from "react";
+import { City } from "../models/City";
 
 type StoreItemProps = {
   id: number;
@@ -9,6 +12,34 @@ type StoreItemProps = {
 };
 
 export function CheckoutPage(price: number) {
+  const [postalCode, setPostalCode] = useState("");
+  const [cityName, setCityName] = useState("");
+
+
+  function handlePostalChange(input: string): void {
+    setPostalCode(input);
+
+    if (input.length === 4) {
+      var cityList = fetchPostalCityLists();
+
+      var cityMatch = cityList.find(city => {
+        return city.postalCode === input;
+      })
+      console.log(cityMatch);
+
+      if (cityMatch) {
+        setCityName(cityMatch.name);
+      }
+    }
+  }
+
+  function fetchPostalCityLists(): City[] {
+    // var cityList = new List<City>
+    var cityList = apiData.map(e => new City(e.nr, e.navn));
+    console.log(cityList);
+    return cityList;
+  }
+
   return (
     <div className="maincontainer">
       <div className="py-5 text-center">
@@ -112,24 +143,25 @@ export function CheckoutPage(price: number) {
                     placeholder=""
                   />
                   <div className="col-md-6 mb-3">
-                    <label form="lastName">By</label>
+                    <label form="postalNr">Postnummer</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="lastName"
+                      id="postalNr"
                       placeholder=""
-                      value=""
+                      onChange = {e => handlePostalChange(e.target.value)}
                     />
                   </div>
 
                   <div className="col-md-6 mb-3">
-                    <label form="lastName">Postnummer</label>
+                    <label form="city">By</label>
                     <input
                       type="text"
                       className="form-control"
-                      id="lastName"
+                      id="city"
                       placeholder=""
-                      value=""
+                      value={cityName}
+                      disabled
                     />
                   </div>
 
@@ -147,12 +179,13 @@ export function CheckoutPage(price: number) {
                     </div>
 
                     <div className="col-md-6 mb-3">
-                      <label form="email">Telefonummer</label>
+                      <label form="phone">Telefonummer</label>
                       <input
-                        type="email"
+                        type="phone"
                         className="form-control"
-                        id="email"
+                        id="phone"
                         placeholder=""
+                        required
                       />
                     </div>
                   </div>
