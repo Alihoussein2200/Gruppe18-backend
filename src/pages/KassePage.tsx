@@ -16,7 +16,7 @@ type StoreItemProps = {
   imgUrl: string;
 };
 
-export function CheckoutPage(price: number) {
+export function CheckoutPage() {
   const [postalCode, setPostalCode] = useState("");
   const [cityName, setCityName] = useState("");
 
