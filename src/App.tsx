@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { Store } from "./pages/VitaminerPage";
+import { Store } from "./pages/BarbarPage";
 import { About } from "./pages/OmPage";
 import { Navbar } from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
