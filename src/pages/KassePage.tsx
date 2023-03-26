@@ -267,11 +267,39 @@ export function CheckoutPage() {
                   </select>
                 </div>
               </div>
+          <div>
+       Når du bestiller, godkender du den gældende fortrydelsesret og fortrolighedspolitik samt vores salgs- og leveringsbetingelser
+            <label>
+             <input type="checkbox" style={{width: "20px"}} />
+              </label> 
+           </div>
+           <div>
+       Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra Gruppe 12 om eksklusive tilbud, trends og personlige anbefalinger.
+           Jeg kan altid tilbagekalde mit samtykke
+
+            <label>
+           <input type="checkbox" style={{width: "20px"}} />
+           </label> 
+          </div>
+
+       <div>
+        Tilføj eventuelle kommentarer til ordren
+        <div>
+
+        </div>
+        <input style={{width: "600px",height: "200px"}}
+
+        />
+
+        </div>  
+
+              
             </div>
             <Button className="btn btn-primary btn-lg btn-block" type="button">
               Fortsæt til betaling
             </Button>
           </form>
+          
         </div>
       </div>
     </div>
