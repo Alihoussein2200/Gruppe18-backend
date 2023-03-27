@@ -120,7 +120,7 @@ export function CheckoutPage() {
         </div>
 
         <div className="col-md-8 order-md-1">
-          <h4 className="mb-3">Adresse</h4>
+          <h4 className="mb-3">Leveringsadresse</h4>
           <form className="needs-validation">
             <div className="row">
               <div className="col-md-6 mb-3">
@@ -207,11 +207,115 @@ export function CheckoutPage() {
                   </div>
                 </div>
               </div>
+
+              <h4 className="mb-3">Betalingsadresse </h4>
+
+              <div className="col-md-6 mb-3">
+                <label form="firstName">Fornavn</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="firstName"
+                  placeholder=""
+                />
+              </div>
+
+              <div className="col-md-6 mb-3">
+                <label form="lastName">Efternavn</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  placeholder=""
+                />
+              </div>
+
+              <div className="mb-3">
+                <label form="email">Firma navn</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  placeholder=""
+                />
+              </div>
+
+              <div className="mb-3">
+                <label form="address">Gadenavn</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  placeholder=""
+                />
+              </div>
+              <div className="col-md-6 mb-3">
+                <label form="postalNr">By</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="postalNr"
+                  placeholder=""
+                  onChange={(e) => handlePostalChange(e.target.value)}
+                />
+              </div>
+
+              <div className="col-md-6 mb-3">
+                <label form="postalNr">Postnummer</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="postalNr"
+                  placeholder=""
+                  onChange={(e) => handlePostalChange(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <div className="col-md-6 mb-3">
+                  <label form="country">Land</label>
+                  <select
+                    className="custom-select d-block w-100"
+                    id="country"
+                    required
+                  >
+                    <option value="">Vælg...</option>
+                    <option>Danmark</option>
+                  </select>
+                </div>
+              </div>
+          <div>
+       Når du bestiller, godkender du den gældende fortrydelsesret og fortrolighedspolitik samt vores salgs- og leveringsbetingelser
+            <label>
+             <input type="checkbox" style={{width: "20px"}} />
+              </label> 
+           </div>
+           <div>
+       Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra Gruppe 12 om eksklusive tilbud, trends og personlige anbefalinger.
+           Jeg kan altid tilbagekalde mit samtykke
+
+            <label>
+           <input type="checkbox" style={{width: "20px"}} />
+           </label> 
+          </div>
+
+       <div>
+        Tilføj eventuelle kommentarer til ordren
+        <div>
+
+        </div>
+        <input style={{width: "600px",height: "200px"}}
+
+        />
+
+        </div>  
+
+              
             </div>
             <Button className="btn btn-primary btn-lg btn-block" type="button">
               Fortsæt til betaling
             </Button>
           </form>
+          
         </div>
       </div>
     </div>
