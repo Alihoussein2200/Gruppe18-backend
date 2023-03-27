@@ -19,30 +19,46 @@ type StoreItemProps = {
 export function CheckoutPage() {
   const [postalCode, setPostalCode] = useState("");
   const [cityName, setCityName] = useState("");
-
-  function handlePostalChange(input: string): void {
+  
+  async function handlePostalChange(input: string): Promise<void> {
     setPostalCode(input);
 
     if (input.length === 4) {
-      var cityList = fetchPostalCityLists();
+      const cityList = await fetchPostalCityLists();
 
-      var cityMatch = cityList.find((city) => {
+      const cityMatch = cityList.find((city) => {
         return city.postalCode === input;
       });
-      console.log(cityMatch);
-
+      
       if (cityMatch) {
         setCityName(cityMatch.name);
       }
+      }
+      else {
+        setCityName("")
+      }
+  }
+
+  async function fetchPostalCityLists(): Promise<City[]> {
+    const apiCity = 'https://api.dataforsyningen.dk/postnumre';
+  
+    try {
+      const response = await fetch(apiCity);
+      const responseData = await response.json();
+      const cityList = responseData.map((e: { nr: string; navn: string; }) => new City(e.nr, e.navn));
+      return cityList;
+    } catch (error) {
+      console.error(error);
+      return [];
     }
   }
 
-  function fetchPostalCityLists(): City[] {
-    // var cityList = new List<City>
-    var cityList = apiData.map((e) => new City(e.nr, e.navn));
-    console.log(cityList);
-    return cityList;
-  }
+  // function fetchPostalCityLists(): City[] {
+  //   // var cityList = new List<City>
+  //   var cityList = apiData.map((e) => new City(e.nr, e.navn));
+  //   console.log(cityList);
+  //   return cityList;
+  // }
 
   const { cartItems } = useShoppingCart();
 
