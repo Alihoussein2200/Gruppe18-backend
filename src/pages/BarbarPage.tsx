@@ -12,7 +12,9 @@ export function Store() {
     fetch(storeItemsUrl)
       .then((response) => response.json())
       .then((responseData) => {
-        const items = responseData.map((item) => (
+        const items = responseData.map((item: JSX.IntrinsicAttributes & { //raw.githubusercontent.com/larsthorup/checkout-data/main/product-v2.json";
+            id: number; name: string; price: number; imgUrl: string;
+          }) => (
           <Col key={item.id}>
             <StoreItem {...item} />
           </Col>
