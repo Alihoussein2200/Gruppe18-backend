@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { formatCurrency } from "../utilities/formatCurrency";
 
 import apiData from "../data/api.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { City } from "../models/City";
 
 import { CheckoutItem } from "../components/CartItem";
@@ -19,7 +19,10 @@ type StoreItemProps = {
 export function CheckoutPage() {
   const [postalCode, setPostalCode] = useState("");
   const [cityName, setCityName] = useState("");
-  
+  const [total, setTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const { cartItems } = useShoppingCart();
+
   async function handlePostalChange(input: string): Promise<void> {
     setPostalCode(input);
 
@@ -29,19 +32,31 @@ export function CheckoutPage() {
       const cityMatch = cityList.find((city) => {
         return city.postalCode === input;
       });
-      
+
       if (cityMatch) {
         setCityName(cityMatch.name);
       }
-      }
-      else {
-        setCityName("")
-      }
+    }
+    else {
+      setCityName("")
+    }
+  }
+
+
+  const calculateTotal = () => {
+    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    setTotal(totalPrice);
+  }
+
+  function calculateDiscount() {
+    if (total > 300) {
+      setDiscount(Math.round((total * 0.10)));
+    }
   }
 
   async function fetchPostalCityLists(): Promise<City[]> {
     const apiCity = 'https://api.dataforsyningen.dk/postnumre';
-  
+
     try {
       const response = await fetch(apiCity);
       const responseData = await response.json();
@@ -53,14 +68,11 @@ export function CheckoutPage() {
     }
   }
 
-  // function fetchPostalCityLists(): City[] {
-  //   // var cityList = new List<City>
-  //   var cityList = apiData.map((e) => new City(e.nr, e.navn));
-  //   console.log(cityList);
-  //   return cityList;
-  // }
+  useEffect(() => {
+    calculateTotal();
+    calculateDiscount();
+  })
 
-  const { cartItems } = useShoppingCart();
 
   return (
     <div className="maincontainer">
@@ -89,16 +101,13 @@ export function CheckoutPage() {
                 <h6 className="my-0">Rabat</h6>
                 <small>Mængderabat</small>
               </div>
-              <span className="text-success">-20 kr</span>
+              <span className="text-success">{discount + " kr."}</span>
             </li>
             <li className="list-group-item d-flex justify-content-between">
               <div className="ms-auto fw-bold fs-5">
                 I alt{" "}
                 {formatCurrency(
-                  cartItems.reduce((total, cartItem) => {
-                    const item = storeItems.find((i) => i.id === cartItem.id);
-                    return total + (item?.price || 0) * cartItem.quantity;
-                  }, 0)
+                  total - discount
                 )}
               </div>
             </li>
@@ -231,11 +240,11 @@ export function CheckoutPage() {
               </div>
 
               <div className="mb-3">
-                <label form="email">Firma navn</label>
+                <label form="companyName">Firma navn</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
-                  id="email"
+                  id="companyName"
                   placeholder=""
                 />
               </div>
@@ -250,13 +259,14 @@ export function CheckoutPage() {
                 />
               </div>
               <div className="col-md-6 mb-3">
-                <label form="postalNr">By</label>
+                <label form="city">By</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="postalNr"
+                  id="city"
                   placeholder=""
-                  onChange={(e) => handlePostalChange(e.target.value)}
+                  value = {cityName}
+                  disabled
                 />
               </div>
 
@@ -283,39 +293,39 @@ export function CheckoutPage() {
                   </select>
                 </div>
               </div>
-          <div>
-       Når du bestiller, godkender du den gældende fortrydelsesret og fortrolighedspolitik samt vores salgs- og leveringsbetingelser
-            <label>
-             <input type="checkbox" style={{width: "20px"}} />
-              </label> 
-           </div>
-           <div>
-       Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra Gruppe 12 om eksklusive tilbud, trends og personlige anbefalinger.
-           Jeg kan altid tilbagekalde mit samtykke
+              <div>
+                Når du bestiller, godkender du den gældende fortrydelsesret og fortrolighedspolitik samt vores salgs- og leveringsbetingelser
+                <label>
+                  <input type="checkbox" style={{ width: "20px" }} />
+                </label>
+              </div>
+              <div>
+                Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra Gruppe 12 om eksklusive tilbud, trends og personlige anbefalinger.
+                Jeg kan altid tilbagekalde mit samtykke
 
-            <label>
-           <input type="checkbox" style={{width: "20px"}} />
-           </label> 
-          </div>
+                <label>
+                  <input type="checkbox" style={{ width: "20px" }} />
+                </label>
+              </div>
 
-       <div>
-        Tilføj eventuelle kommentarer til ordren
-        <div>
+              <div>
+                Tilføj eventuelle kommentarer til ordren
+                <div>
 
-        </div>
-        <input style={{width: "600px",height: "200px"}}
+                </div>
+                <input style={{ width: "600px", height: "200px" }}
 
-        />
+                />
 
-        </div>  
+              </div>
 
-              
+
             </div>
             <Button className="btn btn-primary btn-lg btn-block" type="button">
               Fortsæt til betaling
             </Button>
           </form>
-          
+
         </div>
       </div>
     </div>
