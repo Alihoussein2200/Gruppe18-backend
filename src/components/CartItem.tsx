@@ -6,11 +6,15 @@ import { formatCurrency } from "../utilities/formatCurrency";
 type CartItemProps = {
   id: number;
   quantity: number;
+  name: string;
+  price: number;
 };
 
-export function CartItem({ id, quantity }: CartItemProps) {
-  const { removeFromCart } = useShoppingCart();
-  const item = storeItems.find((i) => i.id === id);
+
+export function CartItem({ id, quantity, name, price }: CartItemProps) {
+  const { removeFromCart, cartItems } = useShoppingCart();
+  const item = cartItems.find((i) => i.id === id);
+
   if (item == null) return null;
 
   return (
@@ -41,8 +45,8 @@ export function CartItem({ id, quantity }: CartItemProps) {
 }
 
 export function CheckoutItem({ id, quantity }: CartItemProps) {
-  const { removeFromCart } = useShoppingCart();
-  const item = storeItems.find((i) => i.id === id);
+  const { removeFromCart, cartItems } = useShoppingCart();
+  const item = cartItems.find((i) => i.id === id);
   if (item == null) return null;
 
   return (

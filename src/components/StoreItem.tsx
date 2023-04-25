@@ -6,10 +6,10 @@ type StoreItemProps = {
   id: number;
   name: string;
   price: number;
-  imgUrl: string;
+  imageUrl: string;
 };
 
-export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+export function StoreItem({ id, name, price, imageUrl }: StoreItemProps) {
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -18,11 +18,12 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
   } = useShoppingCart();
   const quantity = getItemQuantity(id);
 
+
   return (
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={imgUrl}
+        src={imageUrl}
         height="250px"
         style={{ objectFit: "scale-down" }}
       />
@@ -38,7 +39,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
           {quantity == 0 ? (
             <Button
               className="bg-info w-100"
-              onClick={() => increaseCartQuantity(id)}
+              onClick={() => increaseCartQuantity(id, name, price)}
             >
               {" "}
               Tilføj til kurv
@@ -57,7 +58,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
                 <div>
                   <span className="fs-3">{quantity}</span>
                 </div>
-                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
+                <Button onClick={() => increaseCartQuantity(id, name, price)}>+</Button>
               </div>
               <Button
                 onClick={() => removeFromCart(id)}

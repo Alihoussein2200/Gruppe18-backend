@@ -4,6 +4,7 @@ import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
 import storeItems from "../data/items.json";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -11,6 +12,17 @@ type ShoppingCartProps = {
 
 export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const { closeCart, cartItems } = useShoppingCart();
+  const [total, setTotal] = useState(0);
+
+  const calculateTotal = () => {
+    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    setTotal(totalPrice);
+  }
+  
+
+  useEffect(() => {
+    calculateTotal();
+  })
 
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
@@ -20,16 +32,13 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
       <Offcanvas.Body>
         <Stack gap={3}>
           {cartItems.map((item) => (
-            <CartItem key={item.id} {...item} />
+            <CartItem key={item.id} name={item.name} price={item.price} id={item.id} quantity={item.quantity} />
           ))}
 
           <div className="ms-auto fw-bold fs-5">
             I alt{" "}
             {formatCurrency(
-              cartItems.reduce((total, cartItem) => {
-                const item = storeItems.find((i) => i.id === cartItem.id);
-                return total + (item?.price || 0) * cartItem.quantity;
-              }, 0)
+              total
             )}
           </div>
 
