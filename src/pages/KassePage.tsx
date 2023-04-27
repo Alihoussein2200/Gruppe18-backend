@@ -49,10 +49,13 @@ export function CheckoutPage() {
   }
 
   function calculateDiscount() {
-    if (total > 300) {
-      setDiscount(Math.round((total * 0.10)));
+    if (total > 300 && cartItems.length > 0) {
+      setDiscount(Math.round(total * 0.10));
+    } else {
+      setDiscount(0);
     }
   }
+  
 
   async function fetchPostalCityLists(): Promise<City[]> {
     const apiCity = 'https://api.dataforsyningen.dk/postnumre';
@@ -71,7 +74,7 @@ export function CheckoutPage() {
   useEffect(() => {
     calculateTotal();
     calculateDiscount();
-  })
+  });
 
 
   return (
