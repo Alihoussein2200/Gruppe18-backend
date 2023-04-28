@@ -1,3 +1,5 @@
 export function About() {
-  return <h1> Gruppe 12 </h1>;
+  return (<><h4> Webshop lavet af Gruppe 12 </h4>
+  <p>Lavet af Emmanuel, Ali, David, Ahmed og Peter</p></>
+  );
 }

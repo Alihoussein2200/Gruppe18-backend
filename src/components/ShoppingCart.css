@@ -1,0 +1,93 @@
+.offcanvas {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1050;
+    overflow-x: hidden;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: visibility 0s linear 0.3s;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+  }
+  
+  .offcanvas.show {
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  
+  .offcanvas-header {
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+  }
+  
+  .offcanvas-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+  
+  .offcanvas-body {
+    padding: 1rem;
+  }
+  
+  .stack {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .gap-3 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .ms-auto {
+    margin-left: auto;
+  }
+  
+  .fw-bold {
+    font-weight: bold;
+  }
+  
+  .fs-5 {
+    font-size: 1.25rem;
+  }
+  
+  .btn-close {
+    appearance: none;
+    cursor: pointer;
+    padding: 0.5rem 0.5rem;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  
+  .btn-close:hover {
+    opacity: 0.75;
+  }
+  
+  .btn-info {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #17a2b8;
+    border: none;
+    border-radius: 0.25rem;
+    transition: opacity 0.15s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .btn-info:hover {
+    opacity: 0.75;
+  }
+  
+  .w-100 {
+    width: 100%;
+  }
+  

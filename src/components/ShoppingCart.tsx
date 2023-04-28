@@ -1,10 +1,9 @@
-import { Button, Offcanvas, Stack } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../utilities/formatCurrency";
-import storeItems from "../data/items.json";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./ShoppingCart.css";
 
 type ShoppingCartProps = {
   isOpen: boolean;
@@ -15,41 +14,52 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   const [total, setTotal] = useState(0);
 
   const calculateTotal = () => {
-    const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const totalPrice = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
     setTotal(totalPrice);
-  }
-  
+  };
 
   useEffect(() => {
     calculateTotal();
-  })
+  });
+
+  const handleCheckout = () => {
+    closeCart(); // Close the shopping cart
+  };
 
   return (
-    <Offcanvas show={isOpen} onHide={closeCart} placement="end">
-      <Offcanvas.Header closeButton>
-        <Offcanvas.Title> Kurv </Offcanvas.Title>
-      </Offcanvas.Header>
-      <Offcanvas.Body>
-        <Stack gap={3}>
+    <div className={`offcanvas ${isOpen ? "show" : ""}`}>
+      <div className="offcanvas-header">
+        <button type="button" className="btn-close" onClick={closeCart}></button>
+        <h5 className="offcanvas-title">Kurv</h5>
+      </div>
+      <div className="offcanvas-body">
+        <div className="stack gap-3">
           {cartItems.map((item) => (
-            <CartItem key={item.id} name={item.name} price={item.price} id={item.id} quantity={item.quantity} />
+            <CartItem
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              id={item.id}
+              quantity={item.quantity}
+            />
           ))}
 
           <div className="ms-auto fw-bold fs-5">
-            I alt{" "}
-            {formatCurrency(
-              total
-            )}
+            I alt {formatCurrency(total)}
           </div>
 
-          <div >
+          <div>
             <Link to="StorePreview/">
-              {" "}
-              <Button className="bg-info w-100">Gå til Kassen</Button>
+              <button className="btn btn-info w-100" onClick={handleCheckout}>
+                Gå til Kassen
+              </button>
             </Link>
           </div>
-        </Stack>
-      </Offcanvas.Body>
-    </Offcanvas>
+        </div>
+      </div>
+    </div>
   );
 }
