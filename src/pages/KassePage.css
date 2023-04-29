@@ -1,23 +1,24 @@
 /* Main container */
 .maincontainer {
     margin: 0 auto;
-    padding: 20px;
+    padding: -10px;
     max-width: 900px;
   }
   
   /* Header */
   .header {
-    margin-bottom: 0px;
+    margin-bottom: px;
   }
   
   .header h2 {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
   }
   
   p.tekst {
     font-size: px;
     margin-top: -10px;
+    position: center;
   }
   
   /* Cart section */

@@ -1,19 +1,17 @@
-/* Store.css */
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Horizontally center items within the row */
-    margin: -15px;
+    justify-content´: center; 
+    margin: 110px;
   }
   
   .col {
     padding: 15px;
-    width: 33.33%; /* For md={2} xs={1} lg={3} in the original code */
-    box-sizing: border-box; /* Include padding within the width calculation */
+    width: 33.33%; 
+    box-sizing: border-box; 
   }
   
-  /* Add additional styling as needed for the StoreItem component */
   
   
   

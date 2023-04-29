@@ -32,8 +32,9 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   return (
     <div className={`offcanvas ${isOpen ? "show" : ""}`}>
       <div className="offcanvas-header">
-        <button type="button" className="btn-close" onClick={closeCart}></button>
-        <h5 className="offcanvas-title">Kurv</h5>
+      <h3 className="offcanvas-title">Kurv</h3>
+        <button type="button" className="btn-close" onClick={closeCart}> 
+        &times;</button>
       </div>
       <div className="offcanvas-body">
         <div className="stack gap-3">
