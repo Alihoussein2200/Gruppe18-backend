@@ -170,18 +170,24 @@ export function CheckoutPage() {
                 quantity={item.quantity}
               />
             ))}
-            <li className="list-group-item d-flex justify-content-between ">
-              <div className="text-success">
-                <h6 className="my-0">Rabat</h6>
-                <small>Mængderabat</small>
+            <ul className="intetpad">
+              <div className="mainKasse">
+              <div className="MængdeRabatKasse">
+                Mængderabat:
               </div>
-              <span className="text-success">{discount + " kr."}</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between">
-              <div className="ms-auto fw-bold fs-5">
+              <div>
+                <span className="totalPriceKasse">
+                {discount + " kr."}
+                </span> 
+              </div>
+              </div>
+             
+            </ul>
+            <ul>
+              <div className="totalPriceKasse">
                 Total pris {formatCurrency(total - discount)}
               </div>
-            </li>
+            </ul>
 
             <form>
               <div className="kupon">

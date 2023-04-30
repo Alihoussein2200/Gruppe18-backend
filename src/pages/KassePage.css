@@ -11,11 +11,6 @@
   margin-bottom: 0;
 }
 
-.list-group-item .text-success {
-  font-size: 16px;
-  font-weight: bold;
-}
-
 .list-group-item .ms-auto {
   font-size: 24px;
 }
@@ -218,9 +213,10 @@ select {
 }
 
 .kupon {
-  margin-left: 280px;
   column-gap: 20px;
   display: flex;
+  width: 500px;
+  margin-left: 70px;
 }
 
 .kupon-child1 {
@@ -230,3 +226,22 @@ select {
   .col-25 {
     margin-bottom: 20px;
   }
+
+  .totalPriceKasse {
+    font-weight: bold;
+    text-align: right;
+    }
+
+  .MængdeRabatKasse {
+    font-weight: bold;
+    text-align: left;
+   }
+
+   .mainKasse {
+    column-gap: 295px;
+    display: flex;
+   }
+
+   .intetpad{
+    padding: 0;
+   }
