@@ -2,8 +2,9 @@
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content´: center; 
-    margin: 110px;
+    justify-content: center; 
+    margin: 10px;
+    text-align: center;
   }
   
   .col {
@@ -12,6 +13,14 @@
     box-sizing: border-box; 
   }
   
+ .title {
+  font-weight: 700;
+  text-align: center; 
+  font-size: 50px;
+  color: #c5c900;
+ } 
   
-  
+ .color {
+  background-color: #ffffff;
+ } 
   

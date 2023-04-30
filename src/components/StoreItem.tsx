@@ -33,7 +33,7 @@ export function StoreItem({ id, name, price, imageUrl }: StoreItemProps) {
         <div>
           {quantity === 0 ? (
             <button
-              className="btn btn-tilføj"
+              className="btnstoreItem btn-tilføj"
               onClick={() => increaseCartQuantity(id, name, price)}
             >
               Tilføj til kurv
@@ -44,7 +44,7 @@ export function StoreItem({ id, name, price, imageUrl }: StoreItemProps) {
                 <button onClick={() => decreaseCartQuantity(id)} className="btn-margin">-</button>
                 <span className="text">{quantity}</span>
                 <button onClick={() => increaseCartQuantity(id, name, price)} className="btn-margin">+</button>
-                <button onClick={() => removeFromCart(id)} className="btn btn-fjern">
+                <button onClick={() => removeFromCart(id)} className="btnstoreItem btn-fjern">
                 Fjern
               </button>
               </div>

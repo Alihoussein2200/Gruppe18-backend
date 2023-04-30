@@ -7,7 +7,7 @@ export function Navbar() {
   return (
     <div className="navbar">
       <div className="container">
-        <nav className="navbar-nav">
+        <nav>
           <NavLink to="/store" className="nav-link">
             Shop
           </NavLink>
