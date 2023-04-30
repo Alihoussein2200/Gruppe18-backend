@@ -24,8 +24,13 @@ export function Store() {
   }, [storeItemsUrl]);
 
   return (
+   <div className="color">
+    <div className="title">
+    Super Bazar Lyngby #SBL
+    </div>
     <div className="row">
       {displayData}
+    </div>
     </div>
   );
   }
