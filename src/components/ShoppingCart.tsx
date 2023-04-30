@@ -23,10 +23,16 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
 
   useEffect(() => {
     calculateTotal();
-  });
+  }, [cartItems]);
+
+  useEffect(() => {
+    if (cartItems.length === 0 && isOpen) {
+      closeCart();
+    }
+  }, [cartItems, isOpen]);
 
   const handleCheckout = () => {
-    closeCart(); // Close the shopping cart
+    closeCart();
   };
 
   return (
