@@ -10,6 +10,7 @@
     border: 1px solid #000000;
     border-radius: 0.25rem;
     max-height: 549px;
+    width: 400px;
   }
   
   .offcanvas.show {
