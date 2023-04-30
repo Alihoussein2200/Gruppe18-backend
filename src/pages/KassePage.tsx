@@ -91,7 +91,7 @@ export function CheckoutPage() {
                 placeholder="Nielsen Larsen"
               />
               <label htmlFor="adr"> Vejnavn + husnummer</label>
-              <input type="text" id="adr" name="address" />
+              <input type="text" id="adr" name="address" placeholder="Lyngbyvej 12"/>
 
               <div>
                 <div>
@@ -102,7 +102,7 @@ export function CheckoutPage() {
                         type="text"
                         id="PostalNr"
                         name="state"
-                        placeholder=""
+                        placeholder="2800"
                         onChange={(e) => handlePostalChange(e.target.value)}
                       />
                     </div>
@@ -121,7 +121,7 @@ export function CheckoutPage() {
                   <div className="con-tele">
                     <div className="telefonummer">
                       <label htmlFor="phone">Telefonummer</label>
-                      <input type="text" id="phone" placeholder="" required />
+                      <input type="text" id="phone" placeholder="88888888" required />
                     </div>
 
                     <div className="land">
@@ -138,11 +138,11 @@ export function CheckoutPage() {
                     type="text"
                     id="email"
                     name="email"
-                    placeholder="Mail"
+                    placeholder="Lyngby@superbazar.dk"
                   />
 
                   <label htmlFor="email">Bekræft e-mail</label>
-                  <input type="text" id="email2" name="email2" />
+                  <input type="text" id="email2" name="email2" placeholder=""/>
                   <div className="checkbox1">
                     <label>
                       <input type="checkbox" name="sameadr" /> Levering til
