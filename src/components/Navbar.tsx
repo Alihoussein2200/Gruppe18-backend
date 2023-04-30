@@ -17,6 +17,12 @@ export function Navbar() {
           </NavLink>
         </nav>
 
+        <span className="titleNavbar">
+          Super Bazar Lyngby
+
+        </span>
+
+
         {cartQuantity >= 0 && (
           <button
             onClick={openCart}
