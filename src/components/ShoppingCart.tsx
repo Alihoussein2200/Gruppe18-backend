@@ -32,12 +32,13 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   return (
     <div className={`offcanvas ${isOpen ? "show" : ""}`}>
       <div className="offcanvas-header">
-      <h3 className="offcanvas-title">Kurv</h3>
-        <button type="button" className="btn-close" onClick={closeCart}> 
-        &times;</button>
+      <div className="offcanvas-title">Din kurv 
+      <button className="btn-close" onClick={closeCart}> 
+      &times;</button>
+      </div>
       </div>
       <div className="offcanvas-body">
-        <div className="stack gap-3">
+        <div className="stackShoppingCart gapStack">
           {cartItems.map((item) => (
             <CartItem
               key={item.id}
@@ -47,20 +48,19 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
               quantity={item.quantity}
             />
           ))}
-
-          <div className="ms-auto fw-bold fs-5">
+        </div>
+      </div>
+      <div className="totalShoppingCart">
             I alt {formatCurrency(total)}
           </div>
-
-          <div>
-            <Link to="StorePreview/">
-              <button className="btn btn-info w-100" onClick={handleCheckout}>
+      <div>
+      <Link to="StorePreview/">
+              <button className="btnShoppingCart" onClick={handleCheckout}>
                 Gå til Kassen
               </button>
             </Link>
-          </div>
-        </div>
       </div>
     </div>
+
   );
 }

@@ -19,7 +19,7 @@
   
   .cart-item-price {
     font-size: 0.75rem;
-    margin-left: auto;
+    margin-left: 20px;
   }
   
   .cart-item-remove-button {
@@ -27,7 +27,7 @@
     border: none;
     color: #dc3545;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   
   .checkout-item {
@@ -50,7 +50,6 @@
   
   .checkout-item-remove-button {
     position: absolute;
-    right: 0;
     background-color: transparent;
     border: none;
     color: #dc3545;
