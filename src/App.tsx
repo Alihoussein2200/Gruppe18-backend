@@ -5,6 +5,7 @@ import { Navbar } from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 import { CheckoutPage } from "./pages/KassePage";
 import "./App.css"
+import { PaymentPage } from "./pages/BetalingPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/about" element={<About />} />
           <Route path="/StorePreview" element={<CheckoutPage />} />
+          <Route path="/PaymentPage" element={<PaymentPage/>} />
         </Routes>
       </div>
     </ShoppingCartProvider>

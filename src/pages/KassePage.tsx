@@ -4,6 +4,8 @@ import { City } from "../models/City";
 import { CartItem, CheckoutItem } from "../components/CartItem";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import "./KassePage.css";
+import { Link } from "react-router-dom";
+import { PaymentPage } from "./BetalingPage";
 
 type StoreItemProps = {
   id: number;
@@ -224,10 +226,16 @@ export function CheckoutPage() {
           Tilføj eventuelle kommentarer til ordren
           <input style={{ width: "500px", height: "150px" }} />
         </div>
+
+
+        
+
         <div className="b">
-          <button className="button2" type="button">
+          <Link to="PaymentPage/">
+          <button className="button2" onClick={PaymentPage}>
             Fortsæt til betaling
           </button>
+          </Link>
         </div>
       </div>
     </div>
