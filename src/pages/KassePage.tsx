@@ -75,6 +75,7 @@ export function CheckoutPage() {
   }, [cartItems, total]);
 
   return (
+<<<<<<< Updated upstream
     <div className="rowKassePage">
       <div className="col-75">
         <div className="container">
@@ -82,6 +83,15 @@ export function CheckoutPage() {
             <div className="rowKassePage">
               <div className="col-50">
                 <h3>Leveringsadresse</h3>
+=======
+    <div className="row, main-container">
+      <div>
+        <div>
+          <form>
+            <div className="row">
+              <div className="border1">
+                <h3>Kundeinfo</h3>
+>>>>>>> Stashed changes
                 <label htmlFor="fname">Fulde navn</label>
                 <input
                   type="text"
@@ -92,6 +102,7 @@ export function CheckoutPage() {
                 <label htmlFor="adr"> Vejnavn + husnummer</label>
                 <input type="text" id="adr" name="address" />
 
+<<<<<<< Updated upstream
                 <div className="rowKassePage">
                   <div className="col-50">
                     <label htmlFor="postalNr">Postnummer</label>
@@ -113,6 +124,48 @@ export function CheckoutPage() {
                     />
                     <label htmlFor="phone">Telefonummer</label>
                     <input type="text" id="phone" placeholder="" required />
+=======
+                <div>
+                  <div>
+                    <div className="post-container">
+                      <div className="postnummer">
+                        <label htmlFor="postalNr">Postnummer</label>
+                        <input
+                          type="text"
+                          id="PostalNr"
+                          name="state"
+                          placeholder=""
+                          onChange={(e) => handlePostalChange(e.target.value)}
+                        />
+                      </div>
+                      <div className="by">
+                        <label htmlFor="city">By</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="city"
+                          placeholder="Intast venligst et postnummer"
+                          value={cityName}
+                          disabled
+                        />
+                      </div>
+                    </div>
+                    <div className="con-tele">
+                      <div className="telefonummer">
+                        <label htmlFor="phone">Telefonummer</label>
+                        <input type="text" id="phone" placeholder="" required />
+                      </div>
+
+                      <div className="land">
+                        <label htmlFor="country">Land</label>
+                        <select className="country" id="country" required>
+                          <option value="">Vælg...</option>
+                          <option>Danmark</option>
+                        </select>
+                      </div>
+                    </div>
+
+>>>>>>> Stashed changes
                     <label htmlFor="email">E-mail</label>
                     <input
                       type="text"
@@ -120,11 +173,9 @@ export function CheckoutPage() {
                       name="email"
                       placeholder="Mail"
                     />
-                    <label htmlFor="country">Land</label>
-                    <select className="country" id="country" required>
-                      <option value="">Vælg...</option>
-                      <option>Danmark</option>
-                    </select>
+
+                    <label htmlFor="email">Bekræft e-mail</label>
+                    <input type="text" id="email2" name="email2" />
                     <div className="checkbox1">
                       <label>
                         <input type="checkbox" name="sameadr" /> Levering til
@@ -134,6 +185,7 @@ export function CheckoutPage() {
                   </div>
                 </div>
               </div>
+<<<<<<< Updated upstream
 
               <div className="col-50">
                 <h3>Betalingsmetode</h3>
@@ -188,84 +240,60 @@ export function CheckoutPage() {
                   </div>
                 </div>
               </div>
+=======
+>>>>>>> Stashed changes
             </div>
-
-            <h3>Betalingsadresse</h3>
-            <label htmlFor="email">Firma navn</label>
-            <input type="text" id="Firma" name="Firma" placeholder="" />
-            <label htmlFor="adr"> Addresse</label>
-            <input type="text" id="adr" name="address" />
-            <label htmlFor="postalNr">Postnummer</label>
-            <input
-              type="text"
-              id="PostalNr"
-              name="state"
-              placeholder=""
-              onChange={(e) => handlePostalChange(e.target.value)}
-            />
-            <label htmlFor="city">By</label>
-            <input
-              type="text"
-              className="form-control"
-              id="city"
-              placeholder="Intast venligst et postnummer"
-              value={cityName}
-              disabled
-            />
           </form>
         </div>
       </div>
 
-      <div className="col-25">
-        <div>
-          <h3>Kurv</h3>
+      <div className="border2">
+        <h3>Kurv</h3>
 
-          <div>
-            <ul className="list-group mb-3">
-              <li>
-                <div className="gap">
-                  {cartItems.map((item) => (
-                    <CartItem
-                      key={item.id}
-                      name={item.name}
-                      price={item.price}
-                      id={item.id}
-                      quantity={item.quantity}
-                    />
-                  ))}
-                </div>
-              </li>
-
-              <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0">Rabat</h6>
-                  <small>Mængderabat</small>
-                </div>
-                <span className="text-success">{discount + " kr."}</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between">
-                <div className="ms-auto fw-bold fs-5">
-                  I alt {formatCurrency(total - discount)}
-                </div>
-              </li>
-            </ul>
-          </div>
-          <form className="card p-2">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Kuponkode"
+        <ul>
+          <div className="gap">
+            {cartItems.map((item) => (
+              <CartItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                id={item.id}
+                quantity={item.quantity}
               />
+            ))}
+            <li className="list-group-item d-flex justify-content-between ">
+              <div className="text-success">
+                <h6 className="my-0">Rabat</h6>
+                <small>Mængderabat</small>
+              </div>
+              <span className="text-success">{discount + " kr."}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between">
+              <div className="ms-auto fw-bold fs-5">
+                Total pris {formatCurrency(total - discount)}
+              </div>
+            </li>
 
-              <button type="button" className="btn btn-secondary">
-                Tilføj
-              </button>
-            </div>
-          </form>
-        </div>
+            <form>
+              <div className="kupon">
+                <div className="kupon-child1">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Kuponkode"
+                  />
+                </div>
+                <div className="kupon.child2">
+                  <button type="button" className="button1">
+                    Tilføj
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ul>
 
-        <div>
+        <div className="gap">
           <div>
             <label>
               Når du bestiller, godkender du den gældende fortrydelsesret og
@@ -282,12 +310,13 @@ export function CheckoutPage() {
             </label>
           </div>
           Tilføj eventuelle kommentarer til ordren
-          <div></div>
-          <input style={{ width: "600px", height: "200px" }} />
+          <input style={{ width: "700px", height: "150px" }} />
         </div>
-        <button className="btn btn-primary btn-lg btn-block" type="button">
-          Fortsæt til betaling
-        </button>
+        <div className="b">
+          <button className="button2" type="button">
+            Fortsæt til betaling
+          </button>
+        </div>
       </div>
     </div>
   );
