@@ -6,7 +6,7 @@ export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart();
   return (
     <div className="navbar">
-      <div className="container">
+      <div className="containerNavbar">
         <nav>
           <NavLink to="/store" className="nav-link">
             Shop
@@ -17,7 +17,7 @@ export function Navbar() {
           </NavLink>
         </nav>
 
-        {cartQuantity > 0 && (
+        {cartQuantity >= 0 && (
           <button
             onClick={openCart}
             className="cart-button"

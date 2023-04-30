@@ -63,7 +63,7 @@
   margin-right: 5px;
 }
 
-body {
+.body {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
@@ -73,11 +73,11 @@ body {
   box-sizing: border-box;
 }
 
-.row {
+.rowKassePage {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0 -16px;
 }
 

@@ -14,7 +14,7 @@ export function Store() {
       .then((responseData) => {
         console.log(responseData);
         const items = responseData.map((item: JSX.IntrinsicAttributes & { id: number; name: string; price: number; imageUrl: string; }) => (
-          <div className="col" key={item.id}>
+          <div className="colShopPage" key={item.id}>
             <StoreItem {...item} />
           </div>
         ));
@@ -24,11 +24,11 @@ export function Store() {
   }, [storeItemsUrl]);
 
   return (
-   <div className="color">
+   <div className="colorShopPage">
     <div className="title">
     Super Bazar Lyngby #SBL
     </div>
-    <div className="row">
+    <div className="rowShopPage">
       {displayData}
     </div>
     </div>

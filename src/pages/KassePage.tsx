@@ -75,11 +75,11 @@ export function CheckoutPage() {
   }, [cartItems, total]);
 
   return (
-    <div className="row">
+    <div className="rowKassePage">
       <div className="col-75">
         <div className="container">
           <form>
-            <div className="row">
+            <div className="rowKassePage">
               <div className="col-50">
                 <h3>Leveringsadresse</h3>
                 <label htmlFor="fname">Fulde navn</label>
@@ -92,7 +92,7 @@ export function CheckoutPage() {
                 <label htmlFor="adr"> Vejnavn + husnummer</label>
                 <input type="text" id="adr" name="address" />
 
-                <div className="row">
+                <div className="rowKassePage">
                   <div className="col-50">
                     <label htmlFor="postalNr">Postnummer</label>
                     <input
@@ -172,7 +172,7 @@ export function CheckoutPage() {
                   placeholder="MM"
                 />
 
-                <div className="row">
+                <div className="rowKassePage">
                   <div className="col-50">
                     <label htmlFor="expyear">Udløbsår</label>
                     <input
