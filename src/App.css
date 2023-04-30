@@ -1,12 +1,11 @@
 .AppContainer {
-    width: 100%;
-    max-width: 1540px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   }
 
   body {

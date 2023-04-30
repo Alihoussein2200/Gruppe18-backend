@@ -24,13 +24,14 @@ export function Store() {
   }, [storeItemsUrl]);
 
   return (
-   <div className="colorShopPage AppContainerShopPage">
-    <div className="title">
-    Super Bazar Lyngby #SBL
-    </div>
-    <div className="rowShopPage">
-      {displayData}
-    </div>
+    <div className="colorShopPage">
+      <div className="title">
+        Super Bazar Lyngby #SBL
+      </div>
+
+      <div className="rowShopPage">
+        {displayData}
+      </div>
     </div>
   );
-  }
+}

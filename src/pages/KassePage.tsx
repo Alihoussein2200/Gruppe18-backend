@@ -75,138 +75,135 @@ export function CheckoutPage() {
   }, [cartItems, total]);
 
   return (
-    <div className="row, main-container">
+    <div className="row">
       <div>
-        <div>
-          <form>
-            <div className="row">
-              <div className="border1">
-                <h3>Kundeinfo</h3>
-                <label htmlFor="fname">Fulde navn</label>
-                <input
-                  type="text"
-                  id="fname"
-                  name="firstname"
-                  placeholder="Nielsen Larsen"
-                />
-                <label htmlFor="adr"> Vejnavn + husnummer</label>
-                <input type="text" id="adr" name="address" />
+        <form>
+          <div>
+            <div className="border1">
+              <h3>Kundeinfo</h3>
+              <label htmlFor="fname">Fulde navn</label>
+              <input
+                type="text"
+                id="fname"
+                name="firstname"
+                placeholder="Nielsen Larsen"
+              />
+              <label htmlFor="adr"> Vejnavn + husnummer</label>
+              <input type="text" id="adr" name="address" />
 
+              <div>
                 <div>
-                  <div>
-                    <div className="post-container">
-                      <div className="postnummer">
-                        <label htmlFor="postalNr">Postnummer</label>
-                        <input
-                          type="text"
-                          id="PostalNr"
-                          name="state"
-                          placeholder=""
-                          onChange={(e) => handlePostalChange(e.target.value)}
-                        />
-                      </div>
-                      <div className="by">
-                        <label htmlFor="city">By</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="city"
-                          placeholder="Intast venligst et postnummer"
-                          value={cityName}
-                          disabled
-                        />
-                      </div>
+                  <div className="post-container">
+                    <div className="postnummer">
+                      <label htmlFor="postalNr">Postnummer</label>
+                      <input
+                        type="text"
+                        id="PostalNr"
+                        name="state"
+                        placeholder=""
+                        onChange={(e) => handlePostalChange(e.target.value)}
+                      />
                     </div>
-                    <div className="con-tele">
-                      <div className="telefonummer">
-                        <label htmlFor="phone">Telefonummer</label>
-                        <input type="text" id="phone" placeholder="" required />
-                      </div>
-
-                      <div className="land">
-                        <label htmlFor="country">Land</label>
-                        <select className="country" id="country" required>
-                          <option value="">Vælg...</option>
-                          <option>Danmark</option>
-                        </select>
-                      </div>
+                    <div className="by">
+                      <label htmlFor="city">By</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="city"
+                        placeholder="Intast venligst et postnummer"
+                        value={cityName}
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  <div className="con-tele">
+                    <div className="telefonummer">
+                      <label htmlFor="phone">Telefonummer</label>
+                      <input type="text" id="phone" placeholder="" required />
                     </div>
 
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      placeholder="Mail"
-                    />
-
-                    <label htmlFor="email">Bekræft e-mail</label>
-                    <input type="text" id="email2" name="email2" />
-                    <div className="checkbox1">
-                      <label>
-                        <input type="checkbox" name="sameadr" /> Levering til
-                        arbejdsplads
-                      </label>
+                    <div className="land">
+                      <label htmlFor="country">Land</label>
+                      <select className="country" id="country" required>
+                        <option value="">Vælg...</option>
+                        <option>Danmark</option>
+                      </select>
                     </div>
+                  </div>
+
+                  <label htmlFor="email">E-mail</label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Mail"
+                  />
+
+                  <label htmlFor="email">Bekræft e-mail</label>
+                  <input type="text" id="email2" name="email2" />
+                  <div className="checkbox1">
+                    <label>
+                      <input type="checkbox" name="sameadr" /> Levering til
+                      arbejdsplads
+                    </label>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
 
       <div className="border2">
-        <h3>Kurv</h3>
+        <h3>Din kurv</h3>
 
-        <ul>
-          <div className="gap">
-            {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                id={item.id}
-                quantity={item.quantity}
-              />
-            ))}
-            <ul className="intetpad">
-              <div className="mainKasse">
+        <div className="gap">
+          {cartItems.map((item) => (
+            <CartItem
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              id={item.id}
+              quantity={item.quantity}
+            />
+          ))}
+
+          <ul className="intetpad">
+            <div className="mainKasse">
               <div className="MængdeRabatKasse">
                 Mængderabat:
               </div>
               <div>
                 <span className="totalPriceKasse">
-                {discount + " kr."}
-                </span> 
+                  {discount + " kr."}
+                </span>
               </div>
-              </div>
-             
-            </ul>
-            <ul>
-              <div className="totalPriceKasse">
-                Total pris {formatCurrency(total - discount)}
-              </div>
-            </ul>
+            </div>
 
-            <form>
-              <div className="kupon">
-                <div className="kupon-child1">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Kuponkode"
-                  />
-                </div>
-                <div className="kupon.child2">
-                  <button type="button" className="button1">
-                    Tilføj
-                  </button>
-                </div>
+          </ul>
+          <ul>
+            <div className="totalPriceKasse">
+              Total pris {formatCurrency(total - discount)}
+            </div>
+          </ul>
+
+          <form>
+            <div className="kupon">
+              <div className="kupon-child1">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Kuponkode"
+                />
               </div>
-            </form>
-          </div>
-        </ul>
+              <div className="kupon.child2">
+                <button type="button" className="button1">
+                  Tilføj
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
 
         <div className="gap">
           <div>

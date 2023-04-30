@@ -9,7 +9,7 @@ import "./App.css"
 function App() {
   return (
     <ShoppingCartProvider>
-      <Navbar/>
+      <Navbar />
       <div className="AppContainer">
         <Routes>
           <Route path="/store" element={<Store />} />

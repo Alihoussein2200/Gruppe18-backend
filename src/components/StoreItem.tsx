@@ -45,8 +45,8 @@ export function StoreItem({ id, name, price, imageUrl }: StoreItemProps) {
                 <span className="text">{quantity}</span>
                 <button onClick={() => increaseCartQuantity(id, name, price)} className="btn-margin">+</button>
                 <button onClick={() => removeFromCart(id)} className="btnstoreItem btn-fjern">
-                Fjern
-              </button>
+                  Fjern
+                </button>
               </div>
             </div>
           )}

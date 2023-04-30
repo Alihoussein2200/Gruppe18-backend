@@ -38,10 +38,10 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
   return (
     <div className={`offcanvas ${isOpen ? "show" : ""}`}>
       <div className="offcanvas-header">
-      <div className="offcanvas-title">Din kurv 
-      <button className="btn-close" onClick={closeCart}> 
-      &times;</button>
-      </div>
+        <div className="offcanvas-title">Din kurv
+          <button className="btn-close" onClick={closeCart}>
+            &times;</button>
+        </div>
       </div>
       <div className="offcanvas-body">
         <div className="stackShoppingCart gapStack">
@@ -57,14 +57,14 @@ export function ShoppingCart({ isOpen }: ShoppingCartProps) {
         </div>
       </div>
       <div className="totalShoppingCart">
-            I alt {formatCurrency(total)}
-          </div>
+        I alt {formatCurrency(total)}
+      </div>
       <div>
-      <Link to="StorePreview/">
-              <button className="btnShoppingCart" onClick={handleCheckout}>
-                Gå til Kassen
-              </button>
-            </Link>
+        <Link to="StorePreview/">
+          <button className="btnShoppingCart" onClick={handleCheckout}>
+            Gå til Kassen
+          </button>
+        </Link>
       </div>
     </div>
 
