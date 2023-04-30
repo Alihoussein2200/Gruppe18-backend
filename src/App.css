@@ -14,3 +14,11 @@
     padding: 8px;
     background-color: #e1e1e1;
   }
+
+.loadingDot{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #17a2b8;
+}
