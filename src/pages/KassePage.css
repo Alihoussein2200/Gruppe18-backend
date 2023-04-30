@@ -67,7 +67,7 @@
   box-sizing: border-box;
 }
 
-.rowKassePage {
+.row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
@@ -184,14 +184,14 @@ select {
   border: 1px solid #dddddd;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 80px;
-  width: 800px;
+  width: 600px;
   padding: 50px;
 }
 
 .border2 {
   border: 1px solid #dddddd;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  width: 800px;
+  width: 600px;
   padding: 50px;
 }
 
@@ -227,12 +227,6 @@ select {
   width: 200px;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
   .col-25 {
     margin-bottom: 20px;
   }
-}
