@@ -1,83 +1,35 @@
-/* Main container */
-.maincontainer {
-    margin: 0 auto;
-    padding: -10px;
-    max-width: 900px;
-  }
-  
-  /* Header */
-  .header {
-    margin-bottom: px;
-  }
-  
-  .header h2 {
-    font-size: 30px;
-    font-weight: bold;
-  }
-  
-  p.tekst {
-    font-size: px;
-    margin-top: -10px;
-    position: center;
-  }
-  
-  /* Cart section */
-  .order-md2 {
-    margin-bottom: 20px;
-  }
-  
-  .order-md2 h4 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .order-md2 ul {
-    padding-left: 0;
-    list-style-type: none;
-  }
-  
-  .list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    border-radius: 0;
-  }
-  
-  .list-group-item:last-child {
-    margin-bottom: 0;
-  }
-  
-  .list-group-item .text-success {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .list-group-item .ms-auto {
-    font-size: 24px;
-  }
-  
-  /* Form section */
-  .order-md1 {
-    margin-bottom: 40px;
-  }
-  
-  .order-md1 h4 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .needs-validation label {
-    font-weight: bold;
-  }
-  
-  .needs-validation label {
-    font-weight: bold;
-  }
-  
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 0;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-group-item .text-success {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.list-group-item .ms-auto {
+  font-size: 24px;
+}
+
+/* Form section */
+
+.needs-validation label {
+  font-weight: bold;
+}
+
+.needs-validation label {
+  font-weight: bold;
+}
+
 .needs-validation input[type="text"],
 .needs-validation input[type="email"],
 .needs-validation input[type="phone"],
@@ -93,54 +45,147 @@
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-  
+
 .needs-validation select.custom-select {
-    padding-right: 1.75rem;
-    background-position: right 0.75rem center;
-    background-repeat: no-repeat;
-    background-size: 16px 12px;
-  }
+  padding-right: 1.75rem;
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+}
 
-  .needs-validation .invalid-feedback {
-    display: none;
-  }
-  
-  .needs-validation input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-  
-  /* Buttons */
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
-  }
-  
-  .btn-primary:active {
-    background-color: #0062cc;
-    border-color: #005cbf;
-  }
-  
-  .btn-block {
-    display: block;
-    width: 100%;
-  }
-  
-  /* Responsive */
-  @media (max-width: 576px) {
-    .order-md1 {
-      order: 2;
-    }
-  
-    .order-md2 {
-      order: 1;
-    }
-  }
+.needs-validation .invalid-feedback {
+  display: none;
+}
 
-  
+.needs-validation input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  border: 2px solid grey;
+  margin: 20px;
+}
+
+.col-50 {
+  padding-left: 100px;
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  margin: 20px;
+  border: 2px solid grey;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196f3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+select {
+  height: 40px;
+  width: 200px;
+  margin: 0px;
+}
+
+select:focus {
+  width: 200px;
+  height: 40px;
+}
+
+.checkbox1 {
+  padding-top: 30px;
+  margin: 0;
+}
+
+.gap > * + * {
+  margin-top: 1rem;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}

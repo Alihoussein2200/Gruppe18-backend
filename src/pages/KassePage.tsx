@@ -1,7 +1,7 @@
 import { formatCurrency } from "../utilities/formatCurrency";
 import { useEffect, useState } from "react";
 import { City } from "../models/City";
-import { CheckoutItem } from "../components/CartItem";
+import { CartItem, CheckoutItem } from "../components/CartItem";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import "./KassePage.css";
 
@@ -47,7 +47,7 @@ export function CheckoutPage() {
 
   function calculateDiscount() {
     if (total > 300 && cartItems.length > 0) {
-      setDiscount(Math.round(total * 0.10));
+      setDiscount(Math.round(total * 0.1));
     } else {
       setDiscount(0);
     }
@@ -59,7 +59,9 @@ export function CheckoutPage() {
     try {
       const response = await fetch(apiCity);
       const responseData = await response.json();
-      const cityList = responseData.map((e: { nr: string; navn: string }) => new City(e.nr, e.navn));
+      const cityList = responseData.map(
+        (e: { nr: string; navn: string }) => new City(e.nr, e.navn)
+      );
       return cityList;
     } catch (error) {
       console.error(error);
@@ -73,43 +75,181 @@ export function CheckoutPage() {
   }, [cartItems, total]);
 
   return (
-    <div className="maincontainer">
-      <div className="header">
-        <h2>Din Kurv</h2>
-        <p className="tekst">Oversigt over tilføjede produkter til din kurv</p>
+    <div className="row">
+      <div className="col-75">
+        <div className="container">
+          <form>
+            <div className="row">
+              <div className="col-50">
+                <h3>Leveringsadresse</h3>
+                <label htmlFor="fname">Fulde navn</label>
+                <input
+                  type="text"
+                  id="fname"
+                  name="firstname"
+                  placeholder="Nielsen Larsen"
+                />
+                <label htmlFor="adr"> Vejnavn + husnummer</label>
+                <input type="text" id="adr" name="address" />
+
+                <div className="row">
+                  <div className="col-50">
+                    <label htmlFor="postalNr">Postnummer</label>
+                    <input
+                      type="text"
+                      id="PostalNr"
+                      name="state"
+                      placeholder=""
+                      onChange={(e) => handlePostalChange(e.target.value)}
+                    />
+                    <label htmlFor="city">By</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="city"
+                      placeholder="Intast venligst et postnummer"
+                      value={cityName}
+                      disabled
+                    />
+                    <label htmlFor="phone">Telefonummer</label>
+                    <input type="text" id="phone" placeholder="" required />
+                    <label htmlFor="email">E-mail</label>
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      placeholder="Mail"
+                    />
+                    <label htmlFor="country">Land</label>
+                    <select className="country" id="country" required>
+                      <option value="">Vælg...</option>
+                      <option>Danmark</option>
+                    </select>
+                    <div className="checkbox1">
+                      <label>
+                        <input type="checkbox" name="sameadr" /> Levering til
+                        arbejdsplads
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-50">
+                <h3>Betalingsmetode</h3>
+                <label htmlFor="fname">Betalingskort</label>
+                <div className="icon-container">
+                  <i className="fa fa-cc-visa" style={{ color: "navy" }}></i>
+                  <i className="fa fa-cc-amex" style={{ color: "blue" }}></i>
+                  <i
+                    className="fa fa-cc-mastercard"
+                    style={{ color: "red;" }}
+                  ></i>
+                  <i
+                    className="fa fa-cc-discover"
+                    style={{ color: "orange;" }}
+                  ></i>
+                </div>
+                <label htmlFor="cname">Navn på kortet</label>
+                <input
+                  type="text"
+                  id="cname"
+                  name="cardname"
+                  placeholder="John More Doe"
+                />
+                <label htmlFor="ccnum">Kortnummer</label>
+                <input
+                  type="text"
+                  id="ccnum"
+                  name="cardnumber"
+                  placeholder="1111-2222-3333-4444"
+                />
+                <label htmlFor="expmonth">Udløbsdato</label>
+                <input
+                  type="text"
+                  id="expmonth"
+                  name="expmonth"
+                  placeholder="MM"
+                />
+
+                <div className="row">
+                  <div className="col-50">
+                    <label htmlFor="expyear">Udløbsår</label>
+                    <input
+                      type="text"
+                      id="expyear"
+                      name="expyear"
+                      placeholder="ÅÅ"
+                    />
+                  </div>
+                  <div className="col-50">
+                    <label htmlFor="cvv">Kontrolcifre</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="352" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Betalingsadresse</h3>
+            <label htmlFor="email">Firma navn</label>
+            <input type="text" id="Firma" name="Firma" placeholder="" />
+            <label htmlFor="adr"> Addresse</label>
+            <input type="text" id="adr" name="address" />
+            <label htmlFor="postalNr">Postnummer</label>
+            <input
+              type="text"
+              id="PostalNr"
+              name="state"
+              placeholder=""
+              onChange={(e) => handlePostalChange(e.target.value)}
+            />
+            <label htmlFor="city">By</label>
+            <input
+              type="text"
+              className="form-control"
+              id="city"
+              placeholder="Intast venligst et postnummer"
+              value={cityName}
+              disabled
+            />
+          </form>
+        </div>
       </div>
 
-      <div className="row">
-        <div className="col-md4 order-md2 mb-4">
-          <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-muted">Kurv</span>
-            <span className="badge badge-secondary badge-pill"></span>
-          </h4>
-          <ul className="list-group mb-3">
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                {cartItems.map((item) => (
-                  <CheckoutItem key={item.id} {...item} />
-                ))}
-              </div>
-            </li>
+      <div className="col-25">
+        <div>
+          <h3>Kurv</h3>
 
-            <li className="list-group-item d-flex justify-content-between bg-light">
-              <div className="text-success">
-                <h6 className="my-0">Rabat</h6>
-                <small>Mængderabat</small>
-              </div>
-              <span className="text-success">{discount + " kr."}</span>
+          <div>
+            <ul className="list-group mb-3">
+              <li>
+                <div className="gap">
+                  {cartItems.map((item) => (
+                    <CartItem
+                      key={item.id}
+                      name={item.name}
+                      price={item.price}
+                      id={item.id}
+                      quantity={item.quantity}
+                    />
+                  ))}
+                </div>
               </li>
-            <li className="list-group-item d-flex justify-content-between">
-              <div className="ms-auto fw-bold fs-5">
-                I alt{" "}
-                {formatCurrency(
-                  total - discount
-                )}
-              </div>
-            </li>
-          </ul>
+
+              <li className="list-group-item d-flex justify-content-between bg-light">
+                <div className="text-success">
+                  <h6 className="my-0">Rabat</h6>
+                  <small>Mængderabat</small>
+                </div>
+                <span className="text-success">{discount + " kr."}</span>
+              </li>
+              <li className="list-group-item d-flex justify-content-between">
+                <div className="ms-auto fw-bold fs-5">
+                  I alt {formatCurrency(total - discount)}
+                </div>
+              </li>
+            </ul>
+          </div>
           <form className="card p-2">
             <div className="input-group">
               <input
@@ -117,217 +257,38 @@ export function CheckoutPage() {
                 className="form-control"
                 placeholder="Kuponkode"
               />
-              <div className="input-group-append">
-                <button type="button" className="btn btn-secondary">
-                  Tilføj
-                </button>
-              </div>
+
+              <button type="button" className="btn btn-secondary">
+                Tilføj
+              </button>
             </div>
           </form>
         </div>
-        <div className="col-md-8 order-md-1">
-          <h4 className="mb-3">Leveringsadresse</h4>
-          <form className="needs-validation">
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <label htmlFor="firstName">Fornavn</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstName"
-                  placeholder=""
-                />
-              </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="lastName">Efternavn</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastName"
-                  placeholder=""
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="email">Emailadresse</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder=""
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="address">Gadenavn</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="address"
-                  placeholder=""
-                />
-              </div>
-              <div className="col-md-6 mb-3">
-                <label htmlFor="postalNr">Postnummer</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="postalNr"
-                  placeholder=""
-                  onChange={(e) => handlePostalChange(e.target.value)}
-                />
-              </div>
 
-              <div className="col-md-6 mb-3">
-                <label htmlFor="city">By</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="city"
-                  placeholder=""
-                  value={cityName}
-                  disabled
-                />
-              </div>
-
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="country">Land</label>
-                  <select
-                    className="custom-select d-block w-100"
-                    id="country"
-                    required
-                  >
-                    <option value="">Vælg...</option>
-                    <option>Danmark</option>
-                  </select>
-                </div>
-
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="phone">Telefonummer</label>
-                  <input
-                    type="phone"
-                    className="form-control"
-                    id="phone"
-                    placeholder=""
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-
-            <h4 className="mb-3">Betalingsadresse </h4>
-
-            <div className="col-md-6 mb-3">
-              <label htmlFor="firstName">Fornavn</label>
-              <input
-                type="text"
-                className="form-control"
-                id="firstName"
-                placeholder=""
-              />
-            </div>
-
-            <div className="col-md-6 mb-3">
-              <label htmlFor="lastName">Efternavn</label>
-              <input
-                type="text"
-                className="form-control"
-                id="lastName"
-                placeholder=""
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="companyName">Firma navn</label>
-              <input
-                type="text"
-                className="form-control"
-                id="companyName"
-                placeholder=""
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="address">Gadenavn</label>
-              <input
-                type="text"
-                className="form-control"
-                id="address"
-                placeholder=""
-              />
-            </div>
-
-            <div className="col-md-6 mb-3">
-              <label htmlFor="city">By</label>
-              <input
-                type="text"
-                className="form-control"
-                id="city"
-                placeholder=""
-                value={cityName}
-                disabled
-              />
-            </div>
-
-            <div className="col-md-6 mb-3">
-              <label htmlFor="postalNr">Postnummer</label>
-              <input
-                type="text"
-                className="form-control"
-                id="postalNr"
-                placeholder=""
-                onChange={(e) => handlePostalChange(e.target.value)}
-              />
-            </div>
-
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <label htmlFor="country">Land</label>
-                <select
-                  className="custom-select d-block w-100"
-                  id="country"
-                  required
-                >
-                  <option value="">Vælg...</option>
-                  <option>Danmark</option>
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label>
+        <div>
+          <div>
+            <label>
               Når du bestiller, godkender du den gældende fortrydelsesret og
               fortrolighedspolitik samt vores salgs- og leveringsbetingelser
-                <input type="checkbox" style={{ width: "20px" }} />
-              </label>
-            </div>
-            <li>
-            
-            </li>
-
-            <div>
-              <label>
-              Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra
-              Gruppe 12 om eksklusive tilbud, trends og personlige
-              anbefalinger. Jeg kan altid tilbagekalde mit samtykke
-                <input type="checkbox" style={{ width: "20px" }} />
-              </label>
-            </div>
-
-            <div>
-              Tilføj eventuelle kommentarer til ordren
-              <div></div>
-              <input
-                style={{ width: "600px", height: "200px" }}
-              />
-            </div>
-            </form>
+              <input type="checkbox" style={{ width: "20px" }} />
+            </label>
           </div>
+          <div>
+            <label>
+              Ja, tak - jeg vil gerne modtage målrettede e-mails og SMS fra
+              Gruppe 12 om eksklusive tilbud, trends og personlige anbefalinger.
+              Jeg kan altid tilbagekalde mit samtykke
+              <input type="checkbox" style={{ width: "20px" }} />
+            </label>
+          </div>
+          Tilføj eventuelle kommentarer til ordren
+          <div></div>
+          <input style={{ width: "600px", height: "200px" }} />
         </div>
-        <div>
         <button className="btn btn-primary btn-lg btn-block" type="button">
-            Fortsæt til betaling
-          </button>
-        </div>
+          Fortsæt til betaling
+        </button>
       </div>
-);
+    </div>
+  );
 }
