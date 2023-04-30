@@ -75,15 +75,6 @@ export function CheckoutPage() {
   }, [cartItems, total]);
 
   return (
-<<<<<<< Updated upstream
-    <div className="rowKassePage">
-      <div className="col-75">
-        <div className="container">
-          <form>
-            <div className="rowKassePage">
-              <div className="col-50">
-                <h3>Leveringsadresse</h3>
-=======
     <div className="row, main-container">
       <div>
         <div>
@@ -91,7 +82,6 @@ export function CheckoutPage() {
             <div className="row">
               <div className="border1">
                 <h3>Kundeinfo</h3>
->>>>>>> Stashed changes
                 <label htmlFor="fname">Fulde navn</label>
                 <input
                   type="text"
@@ -102,29 +92,6 @@ export function CheckoutPage() {
                 <label htmlFor="adr"> Vejnavn + husnummer</label>
                 <input type="text" id="adr" name="address" />
 
-<<<<<<< Updated upstream
-                <div className="rowKassePage">
-                  <div className="col-50">
-                    <label htmlFor="postalNr">Postnummer</label>
-                    <input
-                      type="text"
-                      id="PostalNr"
-                      name="state"
-                      placeholder=""
-                      onChange={(e) => handlePostalChange(e.target.value)}
-                    />
-                    <label htmlFor="city">By</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="city"
-                      placeholder="Intast venligst et postnummer"
-                      value={cityName}
-                      disabled
-                    />
-                    <label htmlFor="phone">Telefonummer</label>
-                    <input type="text" id="phone" placeholder="" required />
-=======
                 <div>
                   <div>
                     <div className="post-container">
@@ -165,7 +132,6 @@ export function CheckoutPage() {
                       </div>
                     </div>
 
->>>>>>> Stashed changes
                     <label htmlFor="email">E-mail</label>
                     <input
                       type="text"
@@ -185,63 +151,6 @@ export function CheckoutPage() {
                   </div>
                 </div>
               </div>
-<<<<<<< Updated upstream
-
-              <div className="col-50">
-                <h3>Betalingsmetode</h3>
-                <label htmlFor="fname">Betalingskort</label>
-                <div className="icon-container">
-                  <i className="fa fa-cc-visa" style={{ color: "navy" }}></i>
-                  <i className="fa fa-cc-amex" style={{ color: "blue" }}></i>
-                  <i
-                    className="fa fa-cc-mastercard"
-                    style={{ color: "red;" }}
-                  ></i>
-                  <i
-                    className="fa fa-cc-discover"
-                    style={{ color: "orange;" }}
-                  ></i>
-                </div>
-                <label htmlFor="cname">Navn på kortet</label>
-                <input
-                  type="text"
-                  id="cname"
-                  name="cardname"
-                  placeholder="John More Doe"
-                />
-                <label htmlFor="ccnum">Kortnummer</label>
-                <input
-                  type="text"
-                  id="ccnum"
-                  name="cardnumber"
-                  placeholder="1111-2222-3333-4444"
-                />
-                <label htmlFor="expmonth">Udløbsdato</label>
-                <input
-                  type="text"
-                  id="expmonth"
-                  name="expmonth"
-                  placeholder="MM"
-                />
-
-                <div className="rowKassePage">
-                  <div className="col-50">
-                    <label htmlFor="expyear">Udløbsår</label>
-                    <input
-                      type="text"
-                      id="expyear"
-                      name="expyear"
-                      placeholder="ÅÅ"
-                    />
-                  </div>
-                  <div className="col-50">
-                    <label htmlFor="cvv">Kontrolcifre</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="352" />
-                  </div>
-                </div>
-              </div>
-=======
->>>>>>> Stashed changes
             </div>
           </form>
         </div>
@@ -261,18 +170,24 @@ export function CheckoutPage() {
                 quantity={item.quantity}
               />
             ))}
-            <li className="list-group-item d-flex justify-content-between ">
-              <div className="text-success">
-                <h6 className="my-0">Rabat</h6>
-                <small>Mængderabat</small>
+            <ul className="intetpad">
+              <div className="mainKasse">
+              <div className="MængdeRabatKasse">
+                Mængderabat:
               </div>
-              <span className="text-success">{discount + " kr."}</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between">
-              <div className="ms-auto fw-bold fs-5">
+              <div>
+                <span className="totalPriceKasse">
+                {discount + " kr."}
+                </span> 
+              </div>
+              </div>
+             
+            </ul>
+            <ul>
+              <div className="totalPriceKasse">
                 Total pris {formatCurrency(total - discount)}
               </div>
-            </li>
+            </ul>
 
             <form>
               <div className="kupon">
@@ -310,7 +225,7 @@ export function CheckoutPage() {
             </label>
           </div>
           Tilføj eventuelle kommentarer til ordren
-          <input style={{ width: "700px", height: "150px" }} />
+          <input style={{ width: "500px", height: "150px" }} />
         </div>
         <div className="b">
           <button className="button2" type="button">

@@ -24,7 +24,7 @@ export function Store() {
   }, [storeItemsUrl]);
 
   return (
-   <div className="colorShopPage">
+   <div className="colorShopPage AppContainerShopPage">
     <div className="title">
     Super Bazar Lyngby #SBL
     </div>
