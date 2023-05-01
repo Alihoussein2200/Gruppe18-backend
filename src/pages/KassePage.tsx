@@ -6,7 +6,6 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 import "./KassePage.css";
 import { Link } from "react-router-dom";
 import { PaymentPage } from "./BetalingPage";
-import { x } from "vitest/dist/types-7cd96283";
 
 type StoreItemProps = {
   id: number;
@@ -103,15 +102,6 @@ export function CheckoutPage() {
     calculateDiscount();
   }, [cartItems, total]);
 
-  function myFunction(x: HTMLElement | null) {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-
   return (
     <div className="row">
       <div>
@@ -198,16 +188,13 @@ export function CheckoutPage() {
 
                   <label htmlFor="email">Bekræft e-mail</label>
                   <input type="text" id="email2" name="email2" placeholder="" />
-                  <div>
-                    <button onClick={myFunction}>+</button>
-                    <label> Levering til arbejdsplads</label>
+                  <div className="checkbox1">
+                    <label>
+                      <input type="checkbox" name="sameadr" /> Levering til
+                      arbejdsplads
+                    </label>
                   </div>
                 </div>
-              </div>
-              <p></p>
-              <div id="myDIV">
-                <label htmlFor="fname">Firma navn</label>
-                <input type="text" id="fname" name="firstname" />
               </div>
             </div>
           </div>
