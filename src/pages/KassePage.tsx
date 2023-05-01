@@ -74,6 +74,7 @@ export function CheckoutPage() {
       return [];
     }
   }
+  
 
   function myFunction(x: HTMLElement | null) {
     var x = document.getElementById("myDIV");
@@ -83,7 +84,7 @@ export function CheckoutPage() {
       x.style.display = "none";
     }
   }
-
+  
   function sendRequest() {
     const data = JSON.stringify({
       "Full name": fname,
@@ -193,18 +194,15 @@ export function CheckoutPage() {
 
                   <label htmlFor="email">Bekræft e-mail</label>
                   <input type="text" id="email2" name="email2" placeholder="" />
-                  <div>
-                    <button onClick={myFunction}>+</button>
+                  <div className="checkbox1">
+                  <button onClick={myFunction}>+</button>
                     <label> Levering til arbejdsplads</label>
                   </div>
                 </div>
               </div>
 
-              <p></p>
-              <div id="myDIV">
-                <label htmlFor="fname">Firma navn</label>
-                <input type="text" id="fname" name="firstname" />
-              </div>
+              
+
             </div>
           </div>
         </form>
