@@ -6,16 +6,16 @@
   padding-left: 15px;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  }
+}
 
-  body {
-    font-family: Arial;
-    font-size: 17px;
-    padding: 8px;
-    background-color: #e1e1e1;
-  }
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+  background-color: #e1e1e1;
+}
 
-.loadingDot{
+.loadingDot {
   display: flex;
   justify-content: center;
   align-items: center;

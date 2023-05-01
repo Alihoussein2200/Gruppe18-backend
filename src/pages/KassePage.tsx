@@ -264,7 +264,7 @@ export function CheckoutPage() {
             </label>
           </div>
           Tilføj eventuelle kommentarer til ordren
-          <input style={{ width: "500px", height: "150px" }} />
+          <input style={{ width: "500px", height: "80px" }} />
         </div>
 
         <div className="b">
