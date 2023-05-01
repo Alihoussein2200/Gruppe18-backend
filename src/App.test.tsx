@@ -5,10 +5,11 @@ import App from "./App";
 
 describe(App.name, () => {
   it("should render", () => {
-    <BrowserRouter>
-        <Routes>
-            render(<App />);
-        </Routes>
-    </BrowserRouter>
+    render(
+      <BrowserRouter>
+          <App />
+      </BrowserRouter>
+    );
+    expect(screen.getByText("Super Bazar Lyngby")).toBeInTheDocument();
   });
 });
