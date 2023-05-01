@@ -20,6 +20,10 @@ export function CheckoutPage() {
   const [total, setTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
   const { cartItems } = useShoppingCart();
+  const [adr, setAdr] = useState("");
+  const [fname, setFname] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
   async function handlePostalChange(input: string): Promise<void> {
     setPostalCode(input);
@@ -70,6 +74,28 @@ export function CheckoutPage() {
       return [];
     }
   }
+  
+
+  
+  
+  function sendRequest() {
+    const data = JSON.stringify({
+      "Full name": fname,
+      "Address": adr,
+      "City": cityName,
+      "Phone": phone,
+      "Email": email
+    });
+  
+    fetch("https://eoutd6uss7ixkmh.m.pipedream.net", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: data
+    })
+  }
+  
 
   useEffect(() => {
     calculateTotal();
@@ -89,6 +115,8 @@ export function CheckoutPage() {
                 id="fname"
                 name="firstname"
                 placeholder="Nielsen Larsen"
+                value={fname}
+                onChange={(e) => setFname(e.target.value)}
               />
               <label htmlFor="adr"> Vejnavn + husnummer</label>
               <input
@@ -96,6 +124,8 @@ export function CheckoutPage() {
                 id="adr"
                 name="address"
                 placeholder="Lyngbyvej 12"
+                value={adr}
+                onChange={(e) => setAdr(e.target.value)}
               />
 
               <div>
@@ -119,6 +149,7 @@ export function CheckoutPage() {
                         id="city"
                         placeholder="Intast venligst et postnummer"
                         value={cityName}
+                        onChange={(e) => setCityName(e.target.value)}
                         disabled
                       />
                     </div>
@@ -130,6 +161,8 @@ export function CheckoutPage() {
                         type="text"
                         id="phone"
                         placeholder="88888888"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         required
                       />
                     </div>
@@ -149,6 +182,8 @@ export function CheckoutPage() {
                     id="email"
                     name="email"
                     placeholder="Lyngby@superbazar.dk"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
 
                   <label htmlFor="email">Bekræft e-mail</label>
@@ -234,7 +269,7 @@ export function CheckoutPage() {
 
         <div className="b">
           <Link to="../PaymentPage">
-            <button className="button2" onClick={PaymentPage}>
+            <button className="button2" onClick={sendRequest}>
               Fortsæt til betaling
             </button>
           </Link>
