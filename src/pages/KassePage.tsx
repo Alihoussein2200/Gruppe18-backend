@@ -74,7 +74,6 @@ export function CheckoutPage() {
       return [];
     }
   }
-  
 
   function myFunction(x: HTMLElement | null) {
     var x = document.getElementById("myDIV");
@@ -84,25 +83,24 @@ export function CheckoutPage() {
       x.style.display = "none";
     }
   }
-  
+
   function sendRequest() {
     const data = JSON.stringify({
       "Full name": fname,
-      "Address": adr,
-      "City": cityName,
-      "Phone": phone,
-      "Email": email
+      Address: adr,
+      City: cityName,
+      Phone: phone,
+      Email: email,
     });
-  
+
     fetch("https://eoutd6uss7ixkmh.m.pipedream.net", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: data
-    })
+      body: data,
+    });
   }
-  
 
   useEffect(() => {
     calculateTotal();
@@ -195,15 +193,18 @@ export function CheckoutPage() {
 
                   <label htmlFor="email">Bekræft e-mail</label>
                   <input type="text" id="email2" name="email2" placeholder="" />
-                  <div className="checkbox1">
-                  <button onClick={myFunction}>+</button>
+                  <div>
+                    <button onClick={myFunction}>+</button>
                     <label> Levering til arbejdsplads</label>
                   </div>
                 </div>
               </div>
 
-              
-
+              <p></p>
+              <div id="myDIV">
+                <label htmlFor="fname">Firma navn</label>
+                <input type="text" id="fname" name="firstname" />
+              </div>
             </div>
           </div>
         </form>
