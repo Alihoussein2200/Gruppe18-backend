@@ -113,7 +113,7 @@ export function CheckoutPage() {
         <form>
           <div>
             <div className="border1">
-              <h3>Kundeinfo</h3>
+              <h3>Faktureringsadresse</h3>
               <label htmlFor="fname">Fulde navn</label>
               <input
                 type="text"
