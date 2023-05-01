@@ -1,7 +1,6 @@
-import { Button, Stack } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import storeItems from "../data/items.json";
 import { formatCurrency } from "../utilities/formatCurrency";
+import "./CartItem.css";
 
 type CartItemProps = {
   id: number;
@@ -10,7 +9,6 @@ type CartItemProps = {
   price: number;
 };
 
-
 export function CartItem({ id, quantity, name, price }: CartItemProps) {
   const { removeFromCart, cartItems } = useShoppingCart();
   const item = cartItems.find((i) => i.id === id);
@@ -18,29 +16,28 @@ export function CartItem({ id, quantity, name, price }: CartItemProps) {
   if (item == null) return null;
 
   return (
-    <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
-      <div className="me-auto">
+    <div className="cart-item">
+      <div className="cart-item-details">
         <div>
           {item.name}{" "}
           {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: ".65rem" }}>
+            <span className="text-muted small">
               x {quantity}
             </span>
           )}
         </div>
-        <div className="text-muted" style={{ fontSize: ".75rem" }}>
+        <div className="text-muted small">
           {formatCurrency(item.price)}
         </div>
       </div>
-      <div> {formatCurrency(item.price * quantity)}</div>
-      <Button
-        variant="outline-danger"
-        size="sm"
+      <div className="cart-item-price"> {formatCurrency(item.price * quantity)}</div>
+      <button
+        className="cart-item-remove-button"
         onClick={() => removeFromCart(item.id)}
       >
         &times;
-      </Button>
-    </Stack>
+      </button>
+    </div>
   );
 }
 
@@ -50,31 +47,26 @@ export function CheckoutItem({ id, quantity }: CartItemProps) {
   if (item == null) return null;
 
   return (
-    <div>
-      <div style={{ margin: "auto" }}>
-        <div className="col-md4 order-md2 mb-4">
+    <div className="checkout-item">
+      <div className="checkout-item-details">
+        <div>
           {item.name}{" "}
           {quantity > 1 && (
-            <span className="text-muted" style={{ fontSize: ".99rem" }}>
+            <span className="quantity small">
               x {quantity}
             </span>
           )}
-          <div
-            style={{ position: "absolute", right: 40, width: 100, height: 0 }}
-          >
-            {" "}
-            {formatCurrency(item.price * quantity)}
-          </div>
-          <Button
-            style={{ position: "absolute", right: 20 }}
-            variant="outline-danger"
-            size="sm"
-            onClick={() => removeFromCart(item.id)}
-          >
-            &times;
-          </Button>
         </div>
       </div>
+      <div className="checkout-item-price">
+        {formatCurrency(item.price * quantity)}
+      </div>
+      <button
+        className="checkout-item-remove-button"
+        onClick={() => removeFromCart(item.id)}
+      >
+        &times;
+      </button>
     </div>
   );
 }
