@@ -1,6 +1,6 @@
 import "./BetalingPage.css";
 export function PaymentPage() {
-  
+
     return (
     <div className="creditCardForm">
     <div className="heading">
