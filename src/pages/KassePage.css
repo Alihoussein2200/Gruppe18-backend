@@ -19,7 +19,6 @@
   width: 600px;
   padding: 50px;
   margin: 20px;
-  margin: 20px;
 }
 
 .col1 {
@@ -49,6 +48,7 @@ input[type="text"] {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #ffffff;
   background-color: #45a049;
 }
 
@@ -66,12 +66,17 @@ input[type="text"] {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #ffffff;
   background-color: #45a049;
 }
 
 
 .button1:hover {
-  background-color: #45a049;
+  background-color: #27e431;
+}
+
+.button2:hover {
+  background-color: #27e431;
 }
 
 .b {

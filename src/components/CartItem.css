@@ -29,6 +29,10 @@
   font-size: 1.25rem;
 }
 
+.cart-item-remove-button:hover{
+  color: #ff4658;
+}
+
 .checkout-item {
   display: flex;
   align-items: center;

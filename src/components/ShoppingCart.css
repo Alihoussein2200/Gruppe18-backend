@@ -81,6 +81,8 @@
   font-weight: bold;
 }
 
-.btn-info:hover {
-  opacity: 0.75;
+
+
+.btnShoppingCart:hover {
+  background-color: #27e431
 }
