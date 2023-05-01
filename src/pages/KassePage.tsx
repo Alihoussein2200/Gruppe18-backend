@@ -75,7 +75,7 @@ export function CheckoutPage() {
     }
   }
   
-
+/*
   function myFunction(x: HTMLElement | null) {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
@@ -83,7 +83,7 @@ export function CheckoutPage() {
     } else {
       x.style.display = "none";
     }
-  }
+  }*/
   
   function sendRequest() {
     const data = JSON.stringify({
@@ -195,7 +195,7 @@ export function CheckoutPage() {
                   <label htmlFor="email">Bekræft e-mail</label>
                   <input type="text" id="email2" name="email2" placeholder="" />
                   <div className="checkbox1">
-                  <button onClick={myFunction}>+</button>
+                  <button>+</button>
                     <label> Levering til arbejdsplads</label>
                   </div>
                 </div>
