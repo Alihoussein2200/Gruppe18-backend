@@ -18,7 +18,7 @@ export function Navbar() {
         </nav>
 
         <span className="titleNavbar">
-          Super Bazar Lyngby
+          The Web Bazaar
 
         </span>
 
