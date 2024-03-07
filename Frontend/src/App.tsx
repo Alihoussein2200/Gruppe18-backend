@@ -1,14 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Store } from "./pages/ShopPage";
+import HomePage  from "./pages/HomePage";
 import { About } from "./pages/OmPage";
+import EventPage  from "./pages/EventPage";
 import { Navbar } from "./components/Navbar";
-import { ShoppingCartProvider } from "./context/ShoppingCartContext";
-import { CheckoutPage } from "./pages/KassePage";
-import { PaymentPage } from "./pages/BetalingPage";
 import { DotLoader } from "react-spinners";
 import React from "react";
-import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 
 function App() {
@@ -29,23 +28,20 @@ function App() {
         </div>
       )}
 
-      <ShoppingCartProvider>
         <Navbar />
         <div className="AppContainer">
           {isLoading ? null : (
             <Routes>
-              <Route path="/store" element={<Store />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<About />} />
-              <Route path="/StorePreview" element={<CheckoutPage />} />
-              <Route path="/PaymentPage" element={<PaymentPage />} />
+              <Route path="/event" element={<EventPage />} />
             </Routes>
           )}
         </div>
-      </ShoppingCartProvider>
     </div>
   );
-}
 
+          }
 export default App;
 
 

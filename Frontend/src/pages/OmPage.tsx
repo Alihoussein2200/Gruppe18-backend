@@ -1,8 +1,10 @@
+import { Container } from 'react-bootstrap';
+
 export function About() {
   return (
-  <div>
-    <h4> Webshop lavet af Gruppe 12 </h4>
-    <p>Lavet af Emmanuel, Ali, David, Ahmed og Peter</p>
-  </div>
+    <Container>
+      <h1>About Us</h1>
+      <p>Made by Ali This is your go-to platform for sharing events and costs!</p>
+    </Container>
   );
-}
+};

@@ -1,17 +1,16 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('./database/db'); // Ensure DB connection on app start
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json()); // Use Express's built-in middleware
 
-app.get('/', (req, res) => {
-  res.send('EventShare API');
-});
+// Import routes
+const eventRoutes = require('./routes/eventRoutes'); // Assuming you'll create this
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+app.use('/api/events', eventRoutes);
+
+app.listen(PORT, () => console.log(`Server kører på port ${PORT}`));
